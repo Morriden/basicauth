@@ -6,7 +6,7 @@ const connect = require('../lib/utils/connect');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('alchemy-app routes', () => {
+describe('auth routes', () => {
   beforeAll(async() => {
     const uri = await mongod.getUri();
     return connect(uri);
@@ -19,5 +19,20 @@ describe('alchemy-app routes', () => {
   afterAll(async() => {
     await mongoose.connection.close();
     return mongod.stop();
+  });
+
+  it('signs up a user via post', () => {
+    return request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        email: 'test@test.com',
+        password: 'password1234'
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.anything(),
+          email: 'test@test.com'
+        });
+      });
   });
 });
