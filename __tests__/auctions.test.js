@@ -33,7 +33,7 @@ describe('auth routes', () => {
       title: 'title',
       description: 'description',
       quantity: 4,
-      endDate: Date.now()
+      Date: Date.now()
     });
     newBid = await Bid.create({
       auction: newAuction.id,
@@ -57,7 +57,7 @@ describe('auth routes', () => {
         title: 'Auction 1',
         description: 'Auction of stuff',
         quantity: 5,
-        endDate: Date.now()
+        Date: Date.now()
       })
       .then(res => {
         expect(res.body).toEqual({
@@ -66,7 +66,7 @@ describe('auth routes', () => {
           title: 'Auction 1',
           description: 'Auction of stuff',
           quantity: 5,
-          endDate: expect.anything()
+          Date: expect.anything()
         });
       });
   });
@@ -89,7 +89,7 @@ describe('auth routes', () => {
           title: 'title',
           description: 'description',
           quantity: 4,
-          endDate: expect.anything()
+          Date: expect.anything()
         });
       });
   });

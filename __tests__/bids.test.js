@@ -33,7 +33,7 @@ describe('auth routes', () => {
       title: 'title',
       description: 'description',
       quantity: 4,
-      endDate: Date.now()
+      Date: Date.now()
     });
     newBid = await Bid.create({
       auction: newAuction.id,
